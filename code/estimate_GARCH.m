@@ -68,17 +68,20 @@ end
 
 %Create diagonal TV covariance of the MVAR residuals
 newN=size(results.yGARCH,2);
-for k=1:newN
+for k=1:ignore-1
     results.SGARCH{k}=zeros(M,M);
+end
+for k=1:newN
+    results.SGARCH{k+ignore-1}=zeros(M,M);
     for m=1:M
         if(results.hete(m)==0)
             %if GARCH modeling failed, it means that there is no
             %heteroskedasticity in the residuals and we just use the
             %estimated variance on the whole residual time-series
-            results.SGARCH{k}(m,m)=S(m,m);
+            results.SGARCH{k+ignore-1}(m,m)=S(m,m);
         else
             %else we use the predicted GARCH TV variance
-            results.SGARCH{k}(m,m)=results.yGARCH(m,k);
+            results.SGARCH{k+ignore-1}(m,m)=results.yGARCH(m,k);
         end
     end         
 end
