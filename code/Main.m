@@ -16,7 +16,7 @@ close all;clear all;
 param.pmax=10;           %Maximum MVAR model order to be considered when optimizing with the GA
 param.pmaxGARCH=5;       %Maximum order to be considered when fitting GARCH models on the TV-MVAR residuals
 param.metric=1;          %GA Fitness function (1 for multivariate AIC, 2 for multivariate BIC)
-param.ignore=100;        %Number of time points to ignore due to initialization of the estimator (i.e. conventional/proposed KF)
+param.ignore=10;        %Number of time points to ignore due to initialization of the estimator (i.e. conventional/proposed KF)
 param.smoothflag=1;      %Set to 1 to apply smoothing on the estimated TV-MVAR coefficients
 param.hetflag=1;         %Set to 1 for the heteroskedastic case - The TV covariance of the MVAR residuals is estimated using GARCH models
 param.measflag=1;        %Set to 1 to estimate the TV-MVAR measures (i.e. COH,PCOH,DC,gPDC) based on the obtained TV-MVAR coefficients
